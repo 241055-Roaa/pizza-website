@@ -3,8 +3,12 @@ fetch("https://dummyjson.com/recipes")
   .then(data => {
     let container = document.getElementById("products");
 
-    data.recipes.slice(0, 8).forEach(item => {
-      container.innerHTML += `
+   let pizzas = data.recipes.slice(0, 8);
+
+    let html = "";
+
+    pizzas.forEach(item => {
+      html += `
         <div class="card">
           <img src="${item.image}">
           <h3>${item.name}</h3>
@@ -12,4 +16,6 @@ fetch("https://dummyjson.com/recipes")
         </div>
       `;
     });
+
+    container.innerHTML = html;
   });
